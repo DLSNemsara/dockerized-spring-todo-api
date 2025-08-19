@@ -1,0 +1,35 @@
+services:
+  todo-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: todo-app
+    container_name: todo-app
+    environment:
+      - LOG_PATH=/var/log/app
+    ports:
+      - "8080:8080"
+    volumes:
+      - todo-app-logs:/var/log/app
+    networks:
+      - todo-network
+
+  db:
+    image: postgres:16-alpine
+    container_name: todo-db
+    environment:
+      POSTGRES_USER: devuser
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: tododb
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - todo-network
+
+networks:
+  todo-network:
+    driver: bridge
+
+volumes:
+  todo-app-logs:
+  postgres-data:
