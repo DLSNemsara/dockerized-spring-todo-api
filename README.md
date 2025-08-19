@@ -13,6 +13,8 @@ This project was developed as a learning exercise provided by **Cloud Native Sri
 - **Persistent Logging**: Application logs are written to a named Docker volume (`/var/log/app`), ensuring they survive container restarts.
 - **Containerized Database**: A PostgreSQL container serves as the database, with its data persisted in a separate named volume.
 - **Custom Networking**: The Spring Boot API and PostgreSQL database communicate efficiently and securely over a custom user-defined bridge network.
+- **Interactive API Documentation**: Swagger UI is now available via Springdoc OpenAPI, allowing developers to explore and test all API endpoints interactively.
+
 
 ***
 
@@ -71,6 +73,10 @@ You should see two containers (`app` and `db`) with a status of "Up".
 **Access the API**  
 The API will be available at [http://localhost:8080](http://localhost:8080).
 
+**Access Swagger UI**
+
+Interactive API documentation is available at: [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
+
 -----
 
 ## API Endpoints
@@ -90,8 +96,9 @@ You can use a tool like Postman or `curl` to interact with the API.
 ```bash
 curl -X POST http://localhost:8080/api/todos \
 -H "Content-Type: application/json" \
--d '{"title": "Learn Docker Networking", "done": false}'
+-d '{"title": "Configure Kubernetes cluster for rolling updates and autoscaling", "done": false}'
 ```
+💡 All endpoints are fully documented and can be tested directly via Swagger UI.
 
 -----
 
